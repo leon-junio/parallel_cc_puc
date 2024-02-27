@@ -5,11 +5,14 @@ void mm(double* a, double* b, double* c, int width)
 {
 // cada laço pode escrever paralelamente em uma linha de c
 // pragma
+ #pragma omp parallel for
  for (int i = 0; i < width; i++) {
     // pragma
+    #pragma omp parallel for 
     for (int j = 0; j < width; j++) {
       double sum = 0;
-      //pragma
+      //pragma to reduction of sum
+      #pragma omp parallel for reduction(+:sum)
       for (int k = 0; k < width; k++) {
 	    double x = a[i * width + k];
 	    double y = b[k * width + j];
