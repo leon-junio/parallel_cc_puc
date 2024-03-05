@@ -37,7 +37,8 @@ int main()
         else
         {
             soma = 1;
-            #pragma omp parallel for private(cont_primo) reduction(+: soma)
+            #pragma omp parallel for private(cont_primo) reduction(+ : soma) schedule(dynamic, 100)
+            // #pragma omp parallel for private(cont_primo) reduction(+ : soma) schedule(dynamic, 100)
             for (n = 3; n < max_num; n += 2)
             {
                 cont_primo = primo(n);
