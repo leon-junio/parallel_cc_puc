@@ -9,7 +9,7 @@ void add(float* a, float* b){
 
 int main(){
 	
-	int N = 1 << 10;
+	int N = 2 << 10;
 	float *a, *b, *a_gpu, *b_gpu;
 	
 	// Malloc vectors at CPU
@@ -37,7 +37,7 @@ int main(){
 
 	// print the results
 	for(int i=0;i<N;i++){
-		printf("[%d]:%.4f",a[i]);
+		printf("[%d]:%.4f", i, a[i]);
 	}
 
 	cudaFree(a_gpu);
